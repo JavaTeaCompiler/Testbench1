@@ -2,7 +2,9 @@ relwords = [
     'klokken', 'morgen', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag',
     'lørdag', 'søndag', 'velkommen', 'kl', 'bursdag', 'bursdagsfeiring',
     'hjemme', 'hos', 'moro', 'kake', 'kaker', 'brus', 'is', 'veien', 'beskjed',
-    'fotball', 'blir', 'håper', 'passer', 'meg', 'kontakt'
+    'fotball', 'blir', 'håper', 'passer', 'meg', 'kontakt', 'til', 'besøk',
+    'besøke', 'hilsen', 'blir', 'johannes', 'i', 'kveld', 'kino', 'bowling',
+    'overimorgen'
 ]
 klokkeslett = []
 for i in range(0, 24):
@@ -22,8 +24,7 @@ def verifier(message):
     kvalifikasjoner = []
     points = 0
     wordslist = message.split(' ')
-    if (len(wordslist) > 7 and len(wordslist) < 100):
-        print(f'1st level checked, message length is {len(wordslist)} ')
+    if (len(wordslist) > 5 and len(wordslist) < 100):
         for word in wordslist:
             word = word.strip(",.?!=")
             if word in relevanse or word.lower() in relevanse or word.title(
@@ -32,7 +33,7 @@ def verifier(message):
                 kvalifikasjoner.append(word)
         if (points >= 3):
             return (
-                f"The following message is most likely a genuine and relevant message:'{message}', because it is {len(wordslist)} words long and contains these promising words: {kvalifikasjoner} "
+                f"The following message is most likely a genuine and relevant message:\n\n'{message}',\n\n because it is {len(wordslist)} words long and contains these promising words: {kvalifikasjoner} "
             )
 
         else:
